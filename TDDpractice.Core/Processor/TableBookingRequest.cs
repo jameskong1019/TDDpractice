@@ -2,7 +2,7 @@
 
 namespace TDDpractice.Core.Processor
 {
-    internal class TableBookingRequest
+    public class TableBookingRequest
     {
         public TableBookingRequest()
         {

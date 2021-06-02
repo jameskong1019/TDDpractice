@@ -2,14 +2,19 @@
 
 namespace TDDpractice.Core.Processor
 {
-    internal class TableBookingProcessor
+    public class TableBookingProcessor
     {
         public TableBookingProcessor()
         {
         }
 
-        internal TableBookingResponse BookTable(TableBookingRequest request)
+        public TableBookingResponse BookTable(TableBookingRequest request)
         {
+            if(request == null)
+            {
+                throw new ArgumentNullException(nameof(request));
+            }
+
             return new TableBookingResponse()
             {
                 FirstName = request.FirstName,

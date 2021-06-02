@@ -27,5 +27,14 @@ namespace TDDpractice.Core.Processor
             Assert.Equal(request.Date, response.Date);
         }
 
+        [Fact]
+        public void ShouldReturnArgumentNullException()
+        {
+            TableBookingProcessor processor = new TableBookingProcessor();
+
+            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => processor.BookTable(null));
+
+            Assert.Equal("request", exception.ParamName);
+        }
     }
 }

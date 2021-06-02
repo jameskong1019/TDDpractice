@@ -93,3 +93,6 @@ C:\Users\james\Development\TDDpractice\TDDpractice\obj\Debug\netcoreapp3.1\TDDpr
 C:\Users\james\Development\TDDpractice\TDDpractice\obj\Debug\netcoreapp3.1\TDDpractice.Core.Tests.dll
 C:\Users\james\Development\TDDpractice\TDDpractice\obj\Debug\netcoreapp3.1\TDDpractice.Core.Tests.pdb
 C:\Users\james\Development\TDDpractice\TDDpractice\obj\Debug\netcoreapp3.1\TDDpractice.Core.Tests.genruntimeconfig.cache
+C:\Users\james\Development\TDDpractice\TDDpractice\bin\Debug\netcoreapp3.1\TDDpractice.Core.dll
+C:\Users\james\Development\TDDpractice\TDDpractice\bin\Debug\netcoreapp3.1\TDDpractice.Core.pdb
+C:\Users\james\Development\TDDpractice\TDDpractice\obj\Debug\netcoreapp3.1\TDDpractice.Core.Tests.csprojAssemblyReference.cache

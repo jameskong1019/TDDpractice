@@ -1,0 +1,9 @@
+C:\Users\james\Development\TDDpractice\TDDpractice.Core\bin\Debug\netcoreapp3.1\TDDpractice.Core.deps.json
+C:\Users\james\Development\TDDpractice\TDDpractice.Core\bin\Debug\netcoreapp3.1\TDDpractice.Core.dll
+C:\Users\james\Development\TDDpractice\TDDpractice.Core\bin\Debug\netcoreapp3.1\TDDpractice.Core.pdb
+C:\Users\james\Development\TDDpractice\TDDpractice.Core\obj\Debug\netcoreapp3.1\TDDpractice.Core.csprojAssemblyReference.cache
+C:\Users\james\Development\TDDpractice\TDDpractice.Core\obj\Debug\netcoreapp3.1\TDDpractice.Core.AssemblyInfoInputs.cache
+C:\Users\james\Development\TDDpractice\TDDpractice.Core\obj\Debug\netcoreapp3.1\TDDpractice.Core.AssemblyInfo.cs
+C:\Users\james\Development\TDDpractice\TDDpractice.Core\obj\Debug\netcoreapp3.1\TDDpractice.Core.csproj.CoreCompileInputs.cache
+C:\Users\james\Development\TDDpractice\TDDpractice.Core\obj\Debug\netcoreapp3.1\TDDpractice.Core.dll
+C:\Users\james\Development\TDDpractice\TDDpractice.Core\obj\Debug\netcoreapp3.1\TDDpractice.Core.pdb
