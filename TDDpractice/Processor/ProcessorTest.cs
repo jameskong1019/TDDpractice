@@ -1,40 +1,54 @@
-﻿using System;
+﻿using Moq;
+using System;
+using TDDpractice.Core.DataInterface;
+using TDDpractice.Core.Domain;
 using Xunit;
 
 namespace TDDpractice.Core.Processor
 {
     public class ProcessorTest
     {
-        [Fact]
-        public void ShouldReturnResult()
+        private readonly TableBookingRequest _request;
+        private readonly Mock<ITableBookingRepository> _mockTableBookingRepository;
+        private readonly TableBookingProcessor _processor;
+
+        public ProcessorTest()
         {
-            TableBookingRequest request = new TableBookingRequest()
+            _request = new TableBookingRequest()
             {
                 FirstName = "James",
                 LastName = "Kong",
                 Number = "403-222-1020",
-                Date = new DateTime(2020,01,31),
+                Date = new DateTime(2020, 01, 31),
             };
 
-            TableBookingProcessor processor = new TableBookingProcessor();
+            _mockTableBookingRepository = new Mock<ITableBookingRepository>();
+            _processor = new TableBookingProcessor();
+        }
 
-            TableBookingResponse response = processor.BookTable(request);
+        [Fact]
+        public void ShouldReturnResult()
+        {
+            TableBookingResponse response = _processor.BookTable(_request);
 
             Assert.NotNull(response);
-            Assert.Equal(request.FirstName, response.FirstName);
-            Assert.Equal(request.LastName, response.LastName);
-            Assert.Equal(request.Number, response.Number);
-            Assert.Equal(request.Date, response.Date);
+            Assert.Equal(_request.FirstName, response.FirstName);
+            Assert.Equal(_request.LastName, response.LastName);
+            Assert.Equal(_request.Number, response.Number);
+            Assert.Equal(_request.Date, response.Date);
         }
 
         [Fact]
         public void ShouldReturnArgumentNullException()
         {
-            TableBookingProcessor processor = new TableBookingProcessor();
-
-            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => processor.BookTable(null));
-
+            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => _processor.BookTable(null));
             Assert.Equal("request", exception.ParamName);
+        }
+
+        [Fact]
+        public void ShouldSaveTableBooking()
+        {
+            _processor.BookTable(_request);
         }
     }
 }

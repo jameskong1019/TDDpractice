@@ -1,9 +1,13 @@
 ﻿using System;
 
-namespace TDDpractice.Core.Processor
+namespace TDDpractice.Core.Domain
 {
-    public class TableBookingResponse
+    public class TableBookingRequest
     {
+        public TableBookingRequest()
+        {
+        }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Number { get; set; }
