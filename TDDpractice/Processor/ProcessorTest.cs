@@ -23,7 +23,7 @@ namespace TDDpractice.Core.Processor
             };
 
             _mockTableBookingRepository = new Mock<ITableBookingRepository>();
-            _processor = new TableBookingProcessor();
+            _processor = new TableBookingProcessor(_mockTableBookingRepository.Object);
         }
 
         [Fact]
@@ -48,7 +48,23 @@ namespace TDDpractice.Core.Processor
         [Fact]
         public void ShouldSaveTableBooking()
         {
-            _processor.BookTable(_request);
+            TableBooking savedTableBooking = null;
+            
+            // arrange
+            _mockTableBookingRepository.Setup(x => x.Save(It.IsAny<TableBooking>())).Callback<TableBooking>(tableBooking =>
+            {
+                savedTableBooking = tableBooking;
+            });
+            
+            // act
+            var response = _processor.BookTable(_request);
+            _mockTableBookingRepository.Verify(x => x.Save(It.IsAny<TableBooking>()), Times.Once);
+
+            // assert
+            Assert.Equal(_request.FirstName, savedTableBooking.FirstName);
+            Assert.Equal(_request.LastName, savedTableBooking.LastName);
+            Assert.Equal(_request.Number, savedTableBooking.Number);
+            Assert.Equal(_request.Date, savedTableBooking.Date);
         }
     }
 }

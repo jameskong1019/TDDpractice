@@ -95,3 +95,6 @@ C:\Users\james\Development\TDDpractice\TDDpractice\obj\Debug\netcoreapp3.1\TDDpr
 C:\Users\james\Development\TDDpractice\TDDpractice\bin\Debug\netcoreapp3.1\TDDpractice.Core.dll
 C:\Users\james\Development\TDDpractice\TDDpractice\bin\Debug\netcoreapp3.1\TDDpractice.Core.pdb
 C:\Users\james\Development\TDDpractice\TDDpractice\obj\Debug\netcoreapp3.1\TDDpractice.Core.Tests.csprojAssemblyReference.cache
+C:\Users\james\Development\TDDpractice\TDDpractice\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\james\Development\TDDpractice\TDDpractice\bin\Debug\netcoreapp3.1\Moq.dll
+C:\Users\james\Development\TDDpractice\TDDpractice\obj\Debug\netcoreapp3.1\TDDpractice.Core.Tests.csproj.CoreCompileInputs.cache
