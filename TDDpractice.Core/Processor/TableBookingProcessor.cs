@@ -24,9 +24,11 @@ namespace TDDpractice.Core.Processor
             }
 
             var availableTables = _tableRepository.GetAvailableTables(request.Date);
-            if(availableTables.Any())
+            if(availableTables.FirstOrDefault() is Table availableTable)
             {
-                _tableBookingRepository.Save(Create<TableBooking>(request));
+                var tableBooking = Create<TableBooking>(request);
+                tableBooking.TableId = availableTable.Id;
+                _tableBookingRepository.Save(tableBooking);
             }
 
             return Create<TableBookingResponse>(request);

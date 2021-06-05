@@ -1,6 +1,7 @@
 ﻿using Moq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TDDpractice.Core.DataInterface;
 using TDDpractice.Core.Domain;
 using Xunit;
@@ -27,7 +28,7 @@ namespace TDDpractice.Core.Processor
 
             _mockTableBookingRepository = new Mock<ITableBookingRepository>();
 
-            _availableTables = new List<Table>() { new Table() };
+            _availableTables = new List<Table>() { new Table() { Id = 1 } };
 
             _mockTableRepository = new Mock<ITableRepository>();
             _mockTableRepository.Setup(x => x.GetAvailableTables(_request.Date)).Returns(_availableTables);
@@ -74,6 +75,7 @@ namespace TDDpractice.Core.Processor
             Assert.Equal(_request.LastName, savedTableBooking.LastName);
             Assert.Equal(_request.Number, savedTableBooking.Number);
             Assert.Equal(_request.Date, savedTableBooking.Date);
+            Assert.Equal(_availableTables.First().Id, savedTableBooking.TableId);
         }
 
         [Fact]

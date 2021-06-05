@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDpractice.Core.Tests", "TDDpractice\TDDpractice.Core.Tests.csproj", "{5BBFA31F-BE0B-4898-8E35-CCF2A59318C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TDDpractice.Core.Tests", "TDDpractice.Core.Tests\TDDpractice.Core.Tests.csproj", "{5BBFA31F-BE0B-4898-8E35-CCF2A59318C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDpractice.Core", "TDDpractice.Core\TDDpractice.Core.csproj", "{895AF55A-488D-4E48-A5EC-F4E9B7CB61CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TDDpractice.Core", "TDDpractice.Core\TDDpractice.Core.csproj", "{895AF55A-488D-4E48-A5EC-F4E9B7CB61CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
