@@ -32,6 +32,7 @@ namespace TDDpractice.Core.Processor
                 tableBooking.TableId = availableTable.Id;
                 _tableBookingRepository.Save(tableBooking);
 
+                response.TableBookingId = tableBooking.Id;
                 response.ResultCode = TableBookingResultCode.Success;
             }
             else

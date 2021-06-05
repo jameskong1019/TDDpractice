@@ -99,7 +99,29 @@ namespace TDDpractice.Core.Processor
 
             var result = _processor.BookTable(_request);
             Assert.Equal(expectedResultCode, result.ResultCode);
+        }
 
+        [Theory]
+        [InlineData(1, true)]
+        [InlineData(null, false)]
+        public void ShouldReturnExpectedTableBookingId(int? expectedTableBookingId,
+            bool isTableAvailable)
+        {
+            if (!isTableAvailable)
+            {
+                _availableTables.Clear();
+            } 
+            else
+            {
+                _mockTableBookingRepository.Setup(x => x.Save(It.IsAny<TableBooking>()))
+                    .Callback<TableBooking>(tableBooking =>
+                    {
+                        tableBooking.Id = expectedTableBookingId;
+                    });
+            }
+
+            var result = _processor.BookTable(_request);
+            Assert.Equal(expectedTableBookingId, result.TableBookingId);
         }
     }
 }

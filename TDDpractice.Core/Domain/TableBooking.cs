@@ -6,5 +6,6 @@ namespace TDDpractice.Core.Domain
     public class TableBooking : TableBookingBase
     {
         public int TableId { get; set; }
+        public int? Id { get; set; }
     }
 }
