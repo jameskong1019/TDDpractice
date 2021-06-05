@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using TDDpractice.Core.DataInterface;
 using TDDpractice.Core.Domain;
 
@@ -7,10 +8,12 @@ namespace TDDpractice.Core.Processor
     public class TableBookingProcessor
     {
         private readonly ITableBookingRepository _tableBookingRepository;
+        private readonly ITableRepository _tableRepository;
 
-        public TableBookingProcessor(ITableBookingRepository tableBookingRepository)
+        public TableBookingProcessor(ITableBookingRepository tableBookingRepository, ITableRepository tableRepository)
         {
             _tableBookingRepository = tableBookingRepository;
+            _tableRepository = tableRepository;
         }
 
         public TableBookingResponse BookTable(TableBookingRequest request)
@@ -20,7 +23,11 @@ namespace TDDpractice.Core.Processor
                 throw new ArgumentNullException(nameof(request));
             }
 
-            _tableBookingRepository.Save(Create<TableBooking>(request));
+            var availableTables = _tableRepository.GetAvailableTables(request.Date);
+            if(availableTables.Any())
+            {
+                _tableBookingRepository.Save(Create<TableBooking>(request));
+            }
 
             return Create<TableBookingResponse>(request);
         }

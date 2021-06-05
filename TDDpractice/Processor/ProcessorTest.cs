@@ -1,5 +1,6 @@
 ﻿using Moq;
 using System;
+using System.Collections.Generic;
 using TDDpractice.Core.DataInterface;
 using TDDpractice.Core.Domain;
 using Xunit;
@@ -11,6 +12,8 @@ namespace TDDpractice.Core.Processor
         private readonly TableBookingRequest _request;
         private readonly Mock<ITableBookingRepository> _mockTableBookingRepository;
         private readonly TableBookingProcessor _processor;
+        private readonly List<Table> _availableTables;
+        private readonly Mock<ITableRepository> _mockTableRepository;
 
         public ProcessorTest()
         {
@@ -23,7 +26,13 @@ namespace TDDpractice.Core.Processor
             };
 
             _mockTableBookingRepository = new Mock<ITableBookingRepository>();
-            _processor = new TableBookingProcessor(_mockTableBookingRepository.Object);
+
+            _availableTables = new List<Table>() { new Table() };
+
+            _mockTableRepository = new Mock<ITableRepository>();
+            _mockTableRepository.Setup(x => x.GetAvailableTables(_request.Date)).Returns(_availableTables);
+
+            _processor = new TableBookingProcessor(_mockTableBookingRepository.Object, _mockTableRepository.Object);
         }
 
         [Fact]
@@ -49,13 +58,13 @@ namespace TDDpractice.Core.Processor
         public void ShouldSaveTableBooking()
         {
             TableBooking savedTableBooking = null;
-            
+
             // arrange
             _mockTableBookingRepository.Setup(x => x.Save(It.IsAny<TableBooking>())).Callback<TableBooking>(tableBooking =>
             {
                 savedTableBooking = tableBooking;
             });
-            
+
             // act
             var response = _processor.BookTable(_request);
             _mockTableBookingRepository.Verify(x => x.Save(It.IsAny<TableBooking>()), Times.Once);
@@ -65,6 +74,15 @@ namespace TDDpractice.Core.Processor
             Assert.Equal(_request.LastName, savedTableBooking.LastName);
             Assert.Equal(_request.Number, savedTableBooking.Number);
             Assert.Equal(_request.Date, savedTableBooking.Date);
+        }
+
+        [Fact]
+        public void ShouldNotSaveTableIfNoTableIsAvailble()
+        {
+            _availableTables.Clear();
+
+            _processor.BookTable(_request);
+            _mockTableBookingRepository.Verify(x => x.Save(It.IsAny<TableBooking>()), Times.Never);
         }
     }
 }
