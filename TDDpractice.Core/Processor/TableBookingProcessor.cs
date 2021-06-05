@@ -23,15 +23,23 @@ namespace TDDpractice.Core.Processor
                 throw new ArgumentNullException(nameof(request));
             }
 
+            var response = Create<TableBookingResponse>(request);
+
             var availableTables = _tableRepository.GetAvailableTables(request.Date);
             if(availableTables.FirstOrDefault() is Table availableTable)
             {
                 var tableBooking = Create<TableBooking>(request);
                 tableBooking.TableId = availableTable.Id;
                 _tableBookingRepository.Save(tableBooking);
+
+                response.ResultCode = TableBookingResultCode.Success;
+            }
+            else
+            {
+                response.ResultCode = TableBookingResultCode.NoAvailableTables;
             }
 
-            return Create<TableBookingResponse>(request);
+            return response;
         }
 
         private T Create<T>(TableBookingRequest request) where T : TableBookingBase, new()
