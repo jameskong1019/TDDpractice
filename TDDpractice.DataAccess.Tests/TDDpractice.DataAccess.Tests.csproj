@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TDDpractice.Core\TDDpractice.Core.csproj" />
+    <ProjectReference Include="..\TDDpractice.DataAccess\TDDpractice.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

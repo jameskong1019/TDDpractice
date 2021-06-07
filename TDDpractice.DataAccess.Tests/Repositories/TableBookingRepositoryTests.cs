@@ -34,7 +34,6 @@ namespace TDDpractice.DataAccess.Repositories
 
             using (var context = new TableBookerContext(options))
             {
-
                 var tableBookings = context.TableBooking.ToList();
                 var storedTableBooking = Assert.Single(tableBookings);
 
