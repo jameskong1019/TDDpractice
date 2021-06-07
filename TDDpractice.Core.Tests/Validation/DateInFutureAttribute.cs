@@ -14,19 +14,21 @@ namespace TDDpractice.Core.Validation
         {
         }
 
+        public DateInFutureAttribute(Func<DateTime> dateTimeNowProvidier)
+        {
+            _dateTimeNowProvidier = dateTimeNowProvidier;
+            ErrorMessage = "Date should be in the future";
+        }
+
+
         public bool IsValid(DateTime date)
         {
-            if(date > _dateTimeNowProvidier())
+            if (date > _dateTimeNowProvidier())
             {
                 return true;
             }
 
             return false;
-        }
-
-        public DateInFutureAttribute(Func<DateTime> dateTimeNowProvidier)
-        {
-            _dateTimeNowProvidier = dateTimeNowProvidier;
         }
 
     }
