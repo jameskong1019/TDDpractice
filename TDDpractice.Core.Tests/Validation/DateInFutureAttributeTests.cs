@@ -30,7 +30,7 @@ namespace TDDpractice.Core.Validation
         {
             var attribute = new DateInFutureAttribute();
 
-            Assert.Equal("Date must be in the future", attribute.ErrorMessage);
+            Assert.Equal("Date should be in the future", attribute.ErrorMessage);
         }
     }
 }
